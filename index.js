@@ -62,11 +62,11 @@ var interval = setInterval (async function () {
 	}
 		if(dailies.has("488249600264896523") && daily - (Date.now() - dailies.get("488249600264896523")[0]) < 0){
 			dailies.get("488249600264896523")[0] = Date.now();
-			bot.channels.get("706046989556514836").send("pls daily");
+			bot.channels.get("698123867486683166").send("pls daily");
 		} else if (!dailies.has("488249600264896523")){
 			dailies.set("488249600264896523", new Array());
 			dailies.get("488249600264896523").push(Date.now());
-			bot.channels.get("706046989556514836").send("pls daily");
+			bot.channels.get("698123867486683166").send("pls daily");
 		}
 })
 
