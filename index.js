@@ -25,7 +25,7 @@ bot.on("ready", async () => {
   });
 
 
-var interval = setInterval (function () {
+var interval = setInterval (async function () {
     let cooldown = 40300;
 		let daily = 8.64e+7 + 500;
 		if (recent.has("488249600264896523") && (Date.now() - recent.get("488249600264896523")[0]) > 11100 && recent.get("488249600264896523")[1] == 0){
