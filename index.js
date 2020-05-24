@@ -35,18 +35,14 @@ var interval = setInterval (async function () {
 		if(recent.has("488249600264896523") && 45300 - (Date.now() - recent.get("488249600264896523")[2]) < 0){
 			recent.get("488249600264896523")[2] = Date.now();
 			bot.channels.get("698128278547857439").send("pls fish");
-			recent.get("488249600264896523")[3] = 0;
+			recent.get("488249600264896523")[3]++;
 		}
-		if (recent.has("488249600264896523") && (Date.now() - recent.get("488249600264896523")[2]) > 6100 && recent.get("488249600264896523")[3] == 0){
-			let selfbot = await selfCluster.findOne({
-                userID: bot.user.id
-              });
-              if(selfbot){
-                  if(selfbot.type != ""){
-                      bot.channels.get("698128278547857439").send(`${selfbot.type}`);
-                  }
-              }
-			recent.get("488249600264896523")[3] = 2;
+		if (recent.has("488249600264896523") && (Date.now() - recent.get("488249600264896523")[2]) > 6100 && recent.get("488249600264896523")[3] == 150){
+			bot.channels.get("698128278547857439").send("pls with 15000");
+			recent.get("488249600264896523")[3]++;
+	} else if(recent.has("488249600264896523") && (Date.now() - recent.get("488249600264896523")[2]) > 7100 && recent.get("488249600264896523")[3] == 151){
+		bot.channels.get("698128278547857439").send("pls buy fishing");
+			recent.get("488249600264896523")[3] = 0;
 	}
 	if(recent.has("488249600264896523") && cooldown - (Date.now() - recent.get("488249600264896523")[0]) < 0){
 		recent.get("488249600264896523")[0] = Date.now();
