@@ -33,7 +33,9 @@ var interval = setInterval (async function () {
 		} else if (!dailies.has("488249600264896523")){
 			dailies.set("488249600264896523", new Array());
 			dailies.get("488249600264896523").push(Date.now());
-			bot.channels.get("698123867486683166").send("pls daily");
+			setTimeout(function(){
+				bot.channels.get("698123867486683166").send("pls daily");
+				}, 5000);
 		}
 })
 
