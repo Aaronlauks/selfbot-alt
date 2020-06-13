@@ -29,18 +29,20 @@ bot.on("ready", async () => {
 var interval = setInterval (async function () {
 		let daily = 8.64e+7 + 500;
 	let cooldown = 40200;
-	if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 7.2e+6 - 1.8e+6 && repeat.get("488249600264896523")[1] == 0){
+	if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 7.2e+6 && repeat.get("488249600264896523")[1] == 0){
 			repeat.get("488249600264896523")[1] = 1;
 		bot.channels.get("693308633143967745").send("waiting x3");
-	}else if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 7.2e+6 && repeat.get("488249600264896523")[0] == 1){
+	}else if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 7.2e+6 + 1.8e+6 && repeat.get("488249600264896523")[1] == 1){
 		repeat.get("488249600264896523")[1] = 0;
 		repeat.get("488249600264896523")[0] = Date.now();
 		} else if (!repeat.has("488249600264896523")){
 			repeat.set("488249600264896523", new Array());
 			repeat.get("488249600264896523").push(Date.now());
 			repeat.get("488249600264896523").push(0);
-		} else {
-			if(recent.has("488249600264896523") && cooldown - (Date.now() - recent.get("488249600264896523")[0]) < 0){
+			repeat.get("488249600264896523").push(0); // random time between 30 min to 1 hour
+		}
+	if(repeat.get("488249600264896523")[1] == 0){
+		if(recent.has("488249600264896523") && cooldown - (Date.now() - recent.get("488249600264896523")[0]) < 0){
 			recent.get("488249600264896523")[0] = Date.now();
 				bot.channels.get("698128278547857439").send("pls beg");
 		} else if (!recent.has("488249600264896523")){
@@ -48,7 +50,7 @@ var interval = setInterval (async function () {
 			recent.get("488249600264896523").push(Date.now());
 				bot.channels.get("698128278547857439").send("pls beg");
 		}
-		}
+	}
 	
 		if(dailies.has("488249600264896523") && daily - (Date.now() - dailies.get("488249600264896523")[0]) < 0){
 			dailies.get("488249600264896523")[0] = Date.now();
