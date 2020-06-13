@@ -29,10 +29,10 @@ bot.on("ready", async () => {
 var interval = setInterval (async function () {
 		let daily = 8.64e+7 + 500;
 	let cooldown = 40200;
-	if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 8.64e+7 / 2 - 1.8e+6 && repeat.get("488249600264896523")[1] == 0){
+	if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 7.2e+6 - 1.8e+6 && repeat.get("488249600264896523")[1] == 0){
 			repeat.get("488249600264896523")[1] = 1;
 		bot.channels.get("693308633143967745").send("waiting x3");
-	}else if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 8.64e+7 / 2 && repeat.get("488249600264896523")[0] == 1){
+	}else if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > 7.2e+6 && repeat.get("488249600264896523")[0] == 1){
 		repeat.get("488249600264896523")[1] = 0;
 		repeat.get("488249600264896523")[0] = Date.now();
 		} else if (!repeat.has("488249600264896523")){
