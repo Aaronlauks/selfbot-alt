@@ -29,13 +29,15 @@ bot.on("ready", async () => {
 var interval = setInterval (async function () {
 		let daily = 8.64e+7 + 500;
 	let cooldown = 40200;
-	if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > repeat.get("488249600264896523")[2] && repeat.get("488249600264896523")[1] == 0){
+	if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > (repeat.get("488249600264896523")[2] * 3.6e+6)&& repeat.get("488249600264896523")[1] == 0){
 			repeat.get("488249600264896523")[1] = 1;
-		bot.channels.get("693308633143967745").send(`ON: \`${repeat.get("488249600264896523")[2]}\`\nOFF: \`${repeat.get("488249600264896523")[2]}\`\nTOTAL: \`${repeat.get("488249600264896523")[2] + repeat.get("488249600264896523")[3]}\``);
-	}else if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > repeat.get("488249600264896523")[2] + repeat.get("488249600264896523")[3] && repeat.get("488249600264896523")[1] == 1){
+		bot.channels.get("693308633143967745").send(`ON: \`${repeat.get("488249600264896523")[2]}h\`\nOFF: \`${repeat.get("488249600264896523")[2]}h\`\nTOTAL: \`${repeat.get("488249600264896523")[2] + repeat.get("488249600264896523")[3]}h\``);
+	}else if(repeat.has("488249600264896523") && (Date.now() - repeat.get("488249600264896523")[0]) > (repeat.get("488249600264896523")[2] * 3.6e+6) + (repeat.get("488249600264896523")[3] * 3.6e+6)&& repeat.get("488249600264896523")[1] == 1){
 		repeat.get("488249600264896523")[1] = 0;
 		repeat.get("488249600264896523")[0] = Date.now();
 		bot.channels.get("693308633143967745").send("ok back to work");
+		repeat.get("488249600264896523")[2] = Math.round(Math.random() * 2) + 4;
+		repeat.get("488249600264896523")[3] = Math.round(Math.random() * 2) + 4;
 		} else if (!repeat.has("488249600264896523")){
 			repeat.set("488249600264896523", new Array());
 			repeat.get("488249600264896523").push(Date.now());//   0
