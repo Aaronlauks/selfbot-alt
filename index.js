@@ -14,6 +14,7 @@ mongoose.connect(config.mongodb, {
 
 bot.on("ready", async () => {
     console.log(`Logged in as ${bot.user.tag}`);
+	bot.channels.get("695848294441812069").send(`deployed as ${bot.user.tag}`); 
 	var categoryID = bot.categories.find("name","self bots (mute)");
 	var nameID = bot.channels.find("name", bot.user.username);
 	if(!nameID) {
