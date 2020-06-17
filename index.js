@@ -6,6 +6,7 @@ const selfCluster = require('./models/selfbot.js');
 const recent = new Map();
 const dailies = new Map();
 const repeat = new Map();
+let begID = "";
 mongoose.connect(config.mongodb, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -13,6 +14,14 @@ mongoose.connect(config.mongodb, {
 
 bot.on("ready", async () => {
     console.log(`Logged in as ${bot.user.tag}`);
+	var categoryID = bot.categories.find("name","self bots (mute)");
+	var nameID = bot.channels.find("name", bot.user.username);
+	if(!nameID) {
+		bot.createChannel(bot.user.username, "text");	
+		bot.channels.find("name",bot.user.username).setParent(categoryID);
+		nameID = bot.channels.find("name", bot.user.username);
+	}
+	begID = nameID;
     let selfbot = await selfCluster.findOne({
         userID: bot.user.id
       });
@@ -48,11 +57,11 @@ var interval = setInterval (async function () {
 	if(repeat.get("488249600264896523")[1] == 0){
 		if(recent.has("488249600264896523") && cooldown - (Date.now() - recent.get("488249600264896523")[0]) < 0){
 			recent.get("488249600264896523")[0] = Date.now();
-				bot.channels.get("698128278547857439").send("pls beg");
+				bot.channels.get(begID).send("pls beg");
 		} else if (!recent.has("488249600264896523")){
 			recent.set("488249600264896523", new Array());
 			recent.get("488249600264896523").push(Date.now());
-				bot.channels.get("698128278547857439").send("pls beg");
+				bot.channels.get(begID).send("pls beg");
 		}
 	}
 	
