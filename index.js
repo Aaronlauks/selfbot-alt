@@ -19,7 +19,7 @@ bot.on("ready", async () => {
         userID: bot.user.id
       });
       if(!selfbot){
-	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
+	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(async channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
        selfbot = new selfCluster({
