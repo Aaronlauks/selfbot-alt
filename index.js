@@ -24,15 +24,16 @@ bot.on("ready", async () => {
           channel.setParent('695839328437403688');
           begID = channel.id;
 		      id = channel.id;
-        }).catch(console.error);
-	      console.log(id)
-        selfbot = new selfCluster({
+		      console.log(id, channel.id)
+		      selfbot = new selfCluster({
             userID: bot.user.id,
-            giveAmt: id,
-            type: id
+            giveAmt: channel.id,
+            type: channel.id
           });
+        }).catch(console.error);
+        
       } else {
-	      if(selfbot.type != ""){ 
+	      if(selfbot.giveAmt != ""){ 
 		      begID = selfbot.giveAmt;
 	      } else {
 		     bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
