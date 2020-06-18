@@ -19,19 +19,16 @@ bot.on("ready", async () => {
         userID: bot.user.id
       });
       if(!selfbot){
-	      let id = "";
+	      selfbot = new selfCluster({
+            userID: bot.user.id,
+            giveAmt: "",
+            type: ""
+          });
+        }).catch(console.error);
 	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
-		      id = channel.id;
-		      console.log(id, channel.id)
-		      selfbot = new selfCluster({
-            userID: bot.user.id,
-            giveAmt: channel.id,
-            type: channel.id
-          });
-        }).catch(console.error);
-        
+		      selfbot.giveAmt = channel.id;
       } else {
 	      if(selfbot.giveAmt != ""){ 
 		      begID = selfbot.giveAmt;
