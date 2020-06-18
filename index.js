@@ -24,24 +24,24 @@ bot.on("ready", async () => {
             giveAmt: "",
             type: ""
           });
-	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
+	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(async channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
-		      selfbot.giveAmt = channel.id;      
+		      selfbot.giveAmt = channel.id;   
+		      await selfbot.save().catch(e => console.log(e));
         }).catch(console.error);
       } else {
 	      if(selfbot.giveAmt != ""){ 
 		      begID = selfbot.giveAmt;
 	      } else {
-		     bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
+		     bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(async channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
 			     selfbot.giveAmt = channel.id
+			     await selfbot.save().catch(e => console.log(e));
         }).catch(console.error);
 	      }
-	      
       }
-	await selfbot.save().catch(e => console.log(e));
   });
 
 
