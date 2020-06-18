@@ -19,29 +19,29 @@ bot.on("ready", async () => {
         userID: bot.user.id
       });
       if(!selfbot){
-	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(async channel => {
+	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
-       selfbot = new selfCluster({
+        }).catch(console.error);
+        selfbot = new selfCluster({
             userID: bot.user.id,
             giveAmt: 0,
-            type: channel.id
+            type: ""
           }); 
-        }).catch(console.error);
-	      await selfbot.save().catch(e => console.log(e))
+	      selfbot.type = begID;
       } else {
 	      if(selfbot.type != ""){ 
 		      begID = selfbot.type;
-		      await selfbot.save().catch(e => console.log(e))
 	      } else {
-		     bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(async channel => {
+		     bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
 			     selfbot.type = channel.id
-			     await selfbot.save().catch(e => console.log(e))
         }).catch(console.error);
-	      }     
+	      }
+	      
       }
+	await selfbot.save().catch(e => console.log(e));
   });
 
 
