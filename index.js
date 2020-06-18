@@ -25,6 +25,7 @@ bot.on("ready", async () => {
           begID = channel.id;
 		      id = channel.id;
         }).catch(console.error);
+	      console.log(id)
         selfbot = new selfCluster({
             userID: bot.user.id,
             giveAmt: id,
