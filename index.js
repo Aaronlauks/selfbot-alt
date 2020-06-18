@@ -27,8 +27,9 @@ bot.on("ready", async () => {
         selfbot = new selfCluster({
             userID: bot.user.id,
             giveAmt: 0,
-            type: begID
+            type: ""
           }); 
+	      selfbot.type = begID;
       } else {
 	begID = selfbot.type;
       }
