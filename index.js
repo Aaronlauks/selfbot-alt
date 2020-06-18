@@ -15,24 +15,22 @@ mongoose.connect(config.mongodb, {
 bot.on("ready", async () => {
     console.log(`Logged in as ${bot.user.tag}`);
 	bot.channels.get("695848294441812069").send(`ok starting now x3`); 
-	let nameID = bot.guilds.get("690792474352025610").channels.find("name", bot.user.username);
-	if(!nameID) {
-	bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
-          channel.setParent('695839328437403688');
-          begID = channel.id;
-        }).catch(console.error);
-	} else {
-		begID = nameID;
-	}
+	
     let selfbot = await selfCluster.findOne({
         userID: bot.user.id
       });
       if(!selfbot){
+	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
+          channel.setParent('695839328437403688');
+          begID = channel.id;
+        }).catch(console.error);
         selfbot = new selfCluster({
             userID: bot.user.id,
             giveAmt: 0,
-            type: ""
-          });
+            type: begID
+          }); 
+      } else {
+	begID = selfbot.type;
       }
   });
 
