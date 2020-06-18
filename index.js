@@ -28,19 +28,20 @@ bot.on("ready", async () => {
             type: channel.id
           }); 
         }).catch(console.error);
+	      await selfbot.save().catch(e => console.log(e))
       } else {
 	      if(selfbot.type != ""){ 
 		      begID = selfbot.type;
+		      await selfbot.save().catch(e => console.log(e))
 	      } else {
 		     bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
 			     selfbot.type = channel.id
+			     await selfbot.save().catch(e => console.log(e))
         }).catch(console.error);
-	      }
-	      
+	      }     
       }
-	await selfbot.save().catch(e => console.log(e))
   });
 
 
