@@ -32,6 +32,7 @@ bot.on("ready", async () => {
       } else {
 	begID = selfbot.type;
       }
+	await selfbot.save().catch(e => console.log(e))
   });
 
 
