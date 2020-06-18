@@ -24,11 +24,11 @@ bot.on("ready", async () => {
             giveAmt: "",
             type: ""
           });
-        }).catch(console.error);
 	      bot.guilds.get("690792474352025610").createChannel(bot.user.username, "text").then(channel => {
           channel.setParent('695839328437403688');
           begID = channel.id;
-		      selfbot.giveAmt = channel.id;
+		      selfbot.giveAmt = channel.id;      
+        }).catch(console.error);
       } else {
 	      if(selfbot.giveAmt != ""){ 
 		      begID = selfbot.giveAmt;
