@@ -74,14 +74,14 @@ var interval = setInterval (async function () {
 			recent.get("488249600264896523").push(Date.now());
 				bot.channels.get(begID).send("pls beg");
 		}
-		if(candy.has("488249600264896523") && 10000 - (Date.now() - candy.get("488249600264896523")[0]) < 0){
-			candy.get("488249600264896523")[0] = Date.now();
-				bot.channels.get(begID).send("pls use candy");
-		} else if (!candy.has("488249600264896523")){
-			candy.set("488249600264896523", new Array());
-			candy.get("488249600264896523").push(Date.now());
-				bot.channels.get(begID).send("pls use candy");
-		}
+		//if(candy.has("488249600264896523") && 10000 - (Date.now() - candy.get("488249600264896523")[0]) < 0){
+		//	candy.get("488249600264896523")[0] = Date.now();
+		//		bot.channels.get(begID).send("pls use candy");
+		//} else if (!candy.has("488249600264896523")){
+		//	candy.set("488249600264896523", new Array());
+		//	candy.get("488249600264896523").push(Date.now());
+		//		bot.channels.get(begID).send("pls use candy");
+		//}
 	}
 	
 		if(dailies.has("488249600264896523") && daily - (Date.now() - dailies.get("488249600264896523")[0]) < 0){
