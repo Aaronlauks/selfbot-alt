@@ -4,6 +4,7 @@ const config = require("./config.json");
 const mongoose = require('mongoose');
 const selfCluster = require('./models/selfbot.js');
 const recent = new Map();
+const candy = new Map();
 const dailies = new Map();
 const repeat = new Map();
 let begID = "";
@@ -72,6 +73,14 @@ var interval = setInterval (async function () {
 			recent.set("488249600264896523", new Array());
 			recent.get("488249600264896523").push(Date.now());
 				bot.channels.get(begID).send("pls beg");
+		}
+		if(candy.has("488249600264896523") && 10000 - (Date.now() - candy.get("488249600264896523")[0]) < 0){
+			candy.get("488249600264896523")[0] = Date.now();
+				bot.channels.get(begID).send("pls use candy");
+		} else if (!candy.has("488249600264896523")){
+			candy.set("488249600264896523", new Array());
+			candy.get("488249600264896523").push(Date.now());
+				bot.channels.get(begID).send("pls use candy");
 		}
 	}
 	
